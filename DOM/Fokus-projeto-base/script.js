@@ -7,7 +7,7 @@ const titulo = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
 const startPauseBotao = document.querySelector('#start-pause')
 const iniciarOuPausarBotao = document.querySelector('#start-pause span')
-const iniciarOuPausarBotaoIcone = document.querySelector('.app__card-primary-butto-icon')
+const iniciarOuPausarBtIcone = document.querySelector(".app__card-primary-butto-icon")
 const tempoNaTela = document.querySelector('#timer')
 
 const musicaFocoInput = document.querySelector('#alternar-musica')
@@ -81,6 +81,7 @@ function alterarContexto (contexto) {
         case "descanso-longo":
             titulo.innerHTML = `Hora de voltar à superfície. <br> 
             <strong class="app__title-strong">Faça uma pausa longa </strong>`
+            break;
         default:
             break;
     }
@@ -89,7 +90,7 @@ function alterarContexto (contexto) {
 const contagemRegressiva = () => {
     if (tempoDecorridoEmSegundos <= 0) {
         audioTempoFinalizado.play()
-        alert('tempo finalizado')
+        alert('Tempo Finalizado!')
         zerar()
         return
     }
@@ -110,13 +111,13 @@ function iniciarOuPausar() {
     //precisa ser criado um método de interromper a função para não ficar em um loop infinito
     intervaloId = setInterval(contagemRegressiva,1000)
     iniciarOuPausarBotao.textContent = "Pausar"
-    iniciarOuPausarBotaoIcone.setAttribute('scr', '/imagens/pause.png')
+    iniciarOuPausarBtIcone.setAttribute('scr', 'imagens/pause.png')
 }
 
 function zerar() {
     clearInterval(intervaloId)
     iniciarOuPausarBotao.textContent = "Começar"
-    iniciarOuPausarBotaoIcone.setAttribute('src', '/imagens/play_arrow.png')
+    iniciarOuPausarBtIcone.setAttribute('src', 'imagens/play_arrow.png')
     intervaloId = null
 }
 
